@@ -40,7 +40,21 @@ class RouteCreationMapViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
+        var distance = 0.0;
         
+        for index in 0...latitudes.count - 1 {
+            let firstCoord = CLLocation(latitude: latitudes[index], longitude: longitudes[index])
+            if index + 1 == latitudes.count {
+                let secondCoord =  CLLocation(latitude: latitudes[0], longitude: longitudes[0])
+                distance += firstCoord.distance(from: secondCoord)
+            } else {
+                let secondCoord = CLLocation(latitude: latitudes[index + 1], longitude: longitudes[index + 1])
+                distance += firstCoord.distance(from: secondCoord)
+            }
+        }
+        distance = distance / 1609.344
+        
+        RouteService.createRoute(name: "testRoute1", latitudes: latitudes, longitudes: longitudes, distance: distance)
     }
     
     @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
