@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cfu-j2-hOB">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Route Creation Map View Controller-->
+        <scene sceneID="Fdq-YW-AfE">
+            <objects>
+                <viewController id="cfu-j2-hOB" customClass="RouteCreationMapViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fe2-df-d8X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S2o-SQ-WeX">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tKB-lF-AIg" appends="YES" id="M6k-z4-wOv"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyx-wK-hST">
+                                <rect key="frame" x="336" y="25" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="cfu-j2-hOB" eventType="touchUpInside" id="hMY-0h-d4z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zis-5v-iiU" firstAttribute="trailing" secondItem="S2o-SQ-WeX" secondAttribute="trailing" id="1tZ-qy-E4x"/>
+                            <constraint firstItem="S2o-SQ-WeX" firstAttribute="leading" secondItem="zis-5v-iiU" secondAttribute="leading" id="5Bh-5I-oTb"/>
+                            <constraint firstItem="zis-5v-iiU" firstAttribute="bottom" secondItem="S2o-SQ-WeX" secondAttribute="bottom" id="PLV-Ja-fMT"/>
+                            <constraint firstItem="zis-5v-iiU" firstAttribute="trailing" secondItem="yyx-wK-hST" secondAttribute="trailing" constant="5" id="bcM-za-uc1"/>
+                            <constraint firstItem="S2o-SQ-WeX" firstAttribute="top" secondItem="zis-5v-iiU" secondAttribute="top" id="o2m-be-WeL"/>
+                            <constraint firstItem="yyx-wK-hST" firstAttribute="top" secondItem="zis-5v-iiU" secondAttribute="top" constant="5" id="wC8-s3-oP9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zis-5v-iiU"/>
+                    </view>
+                    <connections>
+                        <outlet property="routeMap" destination="S2o-SQ-WeX" id="q16-uT-ZGJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pU5-7N-8o7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tKB-lF-AIg">
+                    <connections>
+                        <action selector="handleTapWithRecognizer:" destination="cfu-j2-hOB" id="drV-uW-R3O"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="162" y="156"/>
+        </scene>
+    </scenes>
+</document>
