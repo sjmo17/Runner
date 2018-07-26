@@ -37,7 +37,7 @@ class RouteCreationMapViewController: UIViewController {
 //        annotation.subtitle = "School for developers"
 //        routeMap.addAnnotation(annotation)
         
-        //showInputDialog()
+        showInputDialog()
     }
     
     @IBAction func saveButton(_ sender: Any) {

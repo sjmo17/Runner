@@ -37,7 +37,6 @@ extension ListRoutesTableViewController {
             self.routes = routes
             self.distances = routeDistances
             self.routesTableView.reloadData()
-            print("test")
         }
     }
 }
