@@ -14,12 +14,10 @@ class Route {
     var name: String
     var distance: Double
     var location: CGPoint
-    var points: [CGPoint]
     
-    init(name: String, distance: Double, location: CGPoint, points: [CGPoint]) {
+    init(name: String, distance: Double, location: CGPoint) {
         self.name = name
         self.distance = distance
         self.location = location
-        self.points = points
     }
 }

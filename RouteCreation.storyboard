@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cfu-j2-hOB">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d7j-Zo-HPD">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,47 +15,86 @@
             <objects>
                 <viewController id="cfu-j2-hOB" customClass="RouteCreationMapViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fe2-df-d8X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S2o-SQ-WeX">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="tKB-lF-AIg" appends="YES" id="M6k-z4-wOv"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyx-wK-hST">
-                                <rect key="frame" x="336" y="25" width="34" height="30"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveButton:" destination="cfu-j2-hOB" eventType="touchUpInside" id="hMY-0h-d4z"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zis-5v-iiU" firstAttribute="trailing" secondItem="S2o-SQ-WeX" secondAttribute="trailing" id="1tZ-qy-E4x"/>
                             <constraint firstItem="S2o-SQ-WeX" firstAttribute="leading" secondItem="zis-5v-iiU" secondAttribute="leading" id="5Bh-5I-oTb"/>
                             <constraint firstItem="zis-5v-iiU" firstAttribute="bottom" secondItem="S2o-SQ-WeX" secondAttribute="bottom" id="PLV-Ja-fMT"/>
-                            <constraint firstItem="zis-5v-iiU" firstAttribute="trailing" secondItem="yyx-wK-hST" secondAttribute="trailing" constant="5" id="bcM-za-uc1"/>
                             <constraint firstItem="S2o-SQ-WeX" firstAttribute="top" secondItem="zis-5v-iiU" secondAttribute="top" id="o2m-be-WeL"/>
-                            <constraint firstItem="yyx-wK-hST" firstAttribute="top" secondItem="zis-5v-iiU" secondAttribute="top" constant="5" id="wC8-s3-oP9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zis-5v-iiU"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6tU-EY-hei">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="wrI-VO-RkU">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6ug-OJ-ddJ">
+                                <rect key="frame" x="20" y="5.6666666666666679" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Q3H-sE-VdH" kind="unwind" identifier="cancelRoute" unwindAction="unwindToListRoutesWithSegue:" id="Kek-E8-RrH"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Tm3-E6-KDO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yyx-wK-hST">
+                                <rect key="frame" x="348" y="5.6666666666666679" width="46" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                <state key="normal" title="SAVE">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButton:" destination="cfu-j2-hOB" eventType="touchUpInside" id="hMY-0h-d4z"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="routeMap" destination="S2o-SQ-WeX" id="q16-uT-ZGJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pU5-7N-8o7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Q3H-sE-VdH" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="tKB-lF-AIg">
                     <connections>
                         <action selector="handleTapWithRecognizer:" destination="cfu-j2-hOB" id="drV-uW-R3O"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="162" y="156"/>
+            <point key="canvasLocation" x="681.15942028985512" y="140.21739130434784"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="avf-kf-dcY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d7j-Zo-HPD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7F4-2k-9FP">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72156862745098038" green="0.792156862745098" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cfu-j2-hOB" kind="relationship" relationship="rootViewController" id="Xyg-wo-KgR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OVz-qw-9oa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-226.08695652173915" y="140.21739130434784"/>
         </scene>
     </scenes>
 </document>
