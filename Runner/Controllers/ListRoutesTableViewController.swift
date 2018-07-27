@@ -9,10 +9,15 @@
 import UIKit
 import FirebaseDatabase
 
+protocol DidTapCellProtocol {
+    func didTapCell(nameOfRoute: String)
+}
+
 class ListRoutesTableViewController: UIViewController {
 
     var routes: [String]?
     var distances: [Double]?
+    var delegate: DidTapCellProtocol?
     
     @IBOutlet weak var routesTableView: UITableView!
     
@@ -67,6 +72,13 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if delegate != nil {
+            let cell = tableView.cellForRow(at: indexPath) as! RouteTableViewCell
+            delegate?.didTapCell(nameOfRoute: cell.routeNameLabel.text!)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
         
@@ -75,6 +87,16 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
             print("addRoute button clicked")
 //            let vc = segue.destination as! RouteCreationMapViewController
 //            vc.delegate = self
+            
+        case "toRouteView":
+            if let indexPath = self.routesTableView.indexPathForSelectedRow {
+                let cell = self.routesTableView.cellForRow(at: indexPath) as! RouteTableViewCell
+
+                let nav = segue.destination as! UINavigationController
+                let vc = nav.topViewController as! RouteSelectedViewController
+                vc.routeName = cell.routeNameLabel.text!
+            }
+            print("toRouteView")
             
         default:
             print("unexpected segue identifier")

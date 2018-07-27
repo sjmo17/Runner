@@ -47,12 +47,11 @@ struct RouteService { // FIREBASE
                 }
             }
             print(latitudesArray)
-        }
-            
-        if latitudesArray.count > 0 {
-            completion(latitudesArray)
-        } else {
-            completion(nil)
+            if latitudesArray.count > 0 {
+                completion(latitudesArray)
+            } else {
+                completion(nil)
+            }
         }
     }
     
@@ -70,12 +69,11 @@ struct RouteService { // FIREBASE
                 }
             }
             print(longitudesArray)
-        }
-        
-        if longitudesArray.count > 0 {
-            completion(longitudesArray)
-        } else {
-            completion(nil)
+            if longitudesArray.count > 0 {
+                completion(longitudesArray)
+            } else {
+                completion(nil)
+            }
         }
     }
     

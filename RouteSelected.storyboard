@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ono-gj-nQO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Title-->
         <scene sceneID="fao-jX-G5a">
             <objects>
-                <viewController id="rFF-MJ-six" sceneMemberID="viewController">
+                <viewController id="rFF-MJ-six" customClass="RouteSelectedViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ywl-Nw-q4E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,10 +34,18 @@
                     <navigationItem key="navigationItem" title="Title" id="PeK-cm-ERE">
                         <barButtonItem key="leftBarButtonItem" title="CANCEL" id="rNb-V6-GNP">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelButtonTappedWith_sender:" destination="rFF-MJ-six" id="cp9-wi-pRd"/>
+                                <segue destination="WdV-uf-Vpg" kind="unwind" identifier="unwindToListRoutes" unwindAction="unwindToListRoutesWithSegue:" id="jxF-Gx-ddk"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="routeMapView" destination="uEl-sp-NuQ" id="MhN-e0-yrP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9a-lq-roY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WdV-uf-Vpg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1175.2" y="95.802098950524751"/>
         </scene>

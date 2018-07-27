@@ -132,6 +132,7 @@
                                                     <outlet property="routeDistanceLabel" destination="xRh-JM-12h" id="y7B-dc-GTB"/>
                                                     <outlet property="routeLocationLabel" destination="N4X-aF-wXz" id="gj5-z4-SDn"/>
                                                     <outlet property="routeNameLabel" destination="G8F-DR-kKG" id="af0-yF-5p6"/>
+                                                    <segue destination="JhB-YJ-gpD" kind="show" identifier="toRouteView" id="sdK-qx-kAx"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -174,6 +175,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAf-pO-RCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1213" y="-891"/>
+        </scene>
+        <!--RouteSelected-->
+        <scene sceneID="d5K-a0-7go">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RouteSelected" id="JhB-YJ-gpD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SVl-Ee-OKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1236" y="-434"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="Klp-ye-Ce9">

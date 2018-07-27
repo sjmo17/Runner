@@ -57,12 +57,6 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
 //        let region = MKCoordinateRegionMake(location, span)
 //        self.routeMap.setRegion(region, animated: true)
         
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = location
-//        annotation.title = "Make School"
-//        annotation.subtitle = "School for developers"
-//        routeMap.addAnnotation(annotation)
-        
         showInputDialog()
     }
     
