@@ -10,6 +10,8 @@
 		C327E1832108FAD000D79C92 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E1822108FAD000D79C92 /* MainTabBarController.swift */; };
 		C327E18521091F5900D79C92 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E18421091F5900D79C92 /* RouteTableViewCell.swift */; };
 		C327E187210920E400D79C92 /* ListRoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E186210920E400D79C92 /* ListRoutesTableViewController.swift */; };
+		C32AC5C6210A690C00713B4C /* RouteSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32AC5C5210A690C00713B4C /* RouteSelectedViewController.swift */; };
+		C32AC5C8210A699F00713B4C /* RouteSelected.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32AC5C7210A699F00713B4C /* RouteSelected.storyboard */; };
 		C39E0DC72107A44500A931F3 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E0DC62107A44500A931F3 /* Route.swift */; };
 		C39E0DCB2107A55E00A931F3 /* RouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E0DCA2107A55E00A931F3 /* RouteService.swift */; };
 		C3B3B2DB2107926F00448259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B3B2DA2107926F00448259 /* AppDelegate.swift */; };
@@ -32,6 +34,8 @@
 		C327E1822108FAD000D79C92 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		C327E18421091F5900D79C92 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		C327E186210920E400D79C92 /* ListRoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoutesTableViewController.swift; sourceTree = "<group>"; };
+		C32AC5C5210A690C00713B4C /* RouteSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectedViewController.swift; sourceTree = "<group>"; };
+		C32AC5C7210A699F00713B4C /* RouteSelected.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RouteSelected.storyboard; sourceTree = "<group>"; };
 		C39E0DC62107A44500A931F3 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C39E0DCA2107A55E00A931F3 /* RouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteService.swift; sourceTree = "<group>"; };
 		C3B3B2D72107926F00448259 /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +113,7 @@
 		C3B3B2EE2107999400448259 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				C32AC5C7210A699F00713B4C /* RouteSelected.storyboard */,
 				C3B3B2FC2107A04D00448259 /* RouteCreation.storyboard */,
 				C3B3B2F821079A6600448259 /* Login.storyboard */,
 				C3B3B2DE2107926F00448259 /* Main.storyboard */,
@@ -144,6 +149,7 @@
 		C3B3B2F4210799E700448259 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C32AC5C5210A690C00713B4C /* RouteSelectedViewController.swift */,
 				C327E186210920E400D79C92 /* ListRoutesTableViewController.swift */,
 				C327E1822108FAD000D79C92 /* MainTabBarController.swift */,
 				C3B3B2FE2107A09100448259 /* RouteCreationMapViewController.swift */,
@@ -245,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3B3B2E52107927100448259 /* LaunchScreen.storyboard in Resources */,
+				C32AC5C8210A699F00713B4C /* RouteSelected.storyboard in Resources */,
 				C3B3B2E22107927100448259 /* Assets.xcassets in Resources */,
 				C3B3B2E02107926F00448259 /* Main.storyboard in Resources */,
 				C3B3B2FD2107A04D00448259 /* RouteCreation.storyboard in Resources */,
@@ -332,6 +339,7 @@
 				C327E187210920E400D79C92 /* ListRoutesTableViewController.swift in Sources */,
 				C3B3B2DB2107926F00448259 /* AppDelegate.swift in Sources */,
 				C39E0DCB2107A55E00A931F3 /* RouteService.swift in Sources */,
+				C32AC5C6210A690C00713B4C /* RouteSelectedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

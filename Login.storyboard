@@ -34,7 +34,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.72314879792366782" green="0.79187085344274111" blue="0.93021589517593384" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.72314879789999997" green="0.79187085339999996" blue="0.93021589520000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="3uq-yJ-gci"/>
                     </view>
                 </viewController>

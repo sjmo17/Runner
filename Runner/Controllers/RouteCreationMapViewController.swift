@@ -15,21 +15,47 @@ protocol RouteCreationMapProtocol {
     func handleTap(gestureRecognizer: UITapGestureRecognizer)
 }
 
-class RouteCreationMapViewController: UIViewController {
+class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
 
     var latitudes = [Double]()
     var longitudes = [Double]()
     var routeName = "Custom Route"
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var routeMap: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let location = CLLocationCoordinate2D(latitude: 37.773514, longitude: -122.417807)
+        
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        routeMap.showsUserLocation = true
+        routeMap.delegate = self
+        
+        // latitude and longitude of user's current location
+//        let userLocation = routeMap.userLocation
+//        let userLat = userLocation.coordinate.latitude
+//        let userLong = userLocation.coordinate.longitude
+        
+        // set location with coordinates
+        let msLocation = CLLocationCoordinate2D(latitude: 37.773514, longitude: -122.417807)
+//        let location = CLLocationCoordinate2D(latitude: userLat, longitude: userLong)
         
         let span = MKCoordinateSpanMake(0.02, 0.02)
-        let region = MKCoordinateRegionMake(location, span)
+        let region = MKCoordinateRegionMake(msLocation, span)
         routeMap.setRegion(region, animated: true)
+        
+//        let userLocation = routeMap.userLocation
+//        let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+//        let span = MKCoordinateSpanMake(0.02, 0.02)
+//        let region = MKCoordinateRegionMake(location, span)
+//        self.routeMap.setRegion(region, animated: true)
         
 //        let annotation = MKPointAnnotation()
 //        annotation.coordinate = location
@@ -94,9 +120,9 @@ class RouteCreationMapViewController: UIViewController {
 
         self.present(alertController, animated: true, completion: nil)
     }
-}
+//}
 
-extension RouteCreationMapViewController: MKMapViewDelegate {
+//extension RouteCreationMapViewController: MKMapViewDelegate {
     func drawLine(latitude1: Double, longitude1: Double, latitude2: Double, longitude2: Double) {
         var coordinateArray = [CLLocationCoordinate2D]()
         coordinateArray.append(CLLocationCoordinate2DMake(latitude1, longitude1))
@@ -116,4 +142,6 @@ extension RouteCreationMapViewController: MKMapViewDelegate {
         }
         fatalError("Something wrong...")
     }
+    
+    
 }

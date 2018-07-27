@@ -49,10 +49,8 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.routes == nil {
-            print("0 rows")
             return 0
         } else {
-            print("rows")
             return self.routes!.count
         }
     }
@@ -63,7 +61,7 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         if let routes = self.routes {
             let route = routes[indexPath.row]
             cell.routeNameLabel.text = route
-            cell.routeDistanceLabel.text = String(distances![indexPath.row])
+            cell.routeDistanceLabel.text = "miles: \(distances![indexPath.row])"
             cell.routeLocationLabel.text = "testLocation"
         }
         return cell
