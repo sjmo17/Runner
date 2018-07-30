@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 protocol DidTapCellProtocol {
     func didTapCell(nameOfRoute: String)
@@ -38,9 +39,10 @@ class ListRoutesTableViewController: UIViewController {
 
 extension ListRoutesTableViewController {
     func reload() {
-        RouteService.getAllRouteNames { (routes, routeDistances) in
+        guard let firUser = Auth.auth().currentUser else { return }
+        RouteService.getUserRoutes(firUser) { (routes) in
             self.routes = routes
-            self.distances = routeDistances
+            //self.distances = routeDistances
             self.routesTableView.reloadData()
         }
     }
@@ -66,7 +68,8 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         if let routes = self.routes {
             let route = routes[indexPath.row]
             cell.routeNameLabel.text = route
-            cell.routeDistanceLabel.text = "miles: \(distances![indexPath.row])"
+            //cell.routeDistanceLabel.text = "miles: \(distances![indexPath.row])"
+            cell.routeDistanceLabel.text = "miles: not implemented"
             cell.routeLocationLabel.text = "testLocation"
         }
         return cell

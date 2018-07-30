@@ -80,30 +80,30 @@ struct RouteService { // FIREBASE
         }
     }
     
-    static func getAllRouteNames(completion: @escaping ([String]?, [Double]?) -> Void) {
-        let ref = Database.database().reference().child("routes")
+    static func getUserRoutes(_ firUser: FIRUser, completion: @escaping ([String]?) -> Void) {
+        let ref = Database.database().reference().child("users").child(firUser.uid).child("routes")
         
         var returnRouteNames = [String]()
-        var returnDistance = [Double]()
+        //var returnDistance = [Double]()
         
         ref.observeSingleEvent(of: .value) { (snapshot) in
             guard let allChildren = snapshot.children.allObjects as? [DataSnapshot]
-                else { return completion(nil, nil)}
+                else { return completion(nil)}//, nil)}
             
             for child in allChildren {
-                returnRouteNames.append(child.key)
+                returnRouteNames.append(child.value as! String)
                 
-                let insideChild = child.value as? [String : Any]
-                if let inside = insideChild {
-                    let distance = inside["distance"]
-                    returnDistance.append(distance as! Double)
-                }
+//                let insideChild = child.value as? [String : Any]
+//                if let inside = insideChild {
+//                    let distance = inside["distance"]
+//                    returnDistance.append(distance as! Double)
+//                }
             }
             
             if returnRouteNames.count > 0 {
-                completion (returnRouteNames, returnDistance)
+                completion (returnRouteNames)//, returnDistance)
             } else {
-                return completion(nil, nil)
+                return completion(nil)//, nil)
             }
         }
     }
