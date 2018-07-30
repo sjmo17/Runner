@@ -14,7 +14,7 @@
         <!--Account-->
         <scene sceneID="sl1-rR-qFV">
             <objects>
-                <viewController id="nQQ-U1-S7z" sceneMemberID="viewController">
+                <viewController id="nQQ-U1-S7z" customClass="ProfileViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u5p-Kw-0nW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,6 +124,12 @@
                         <viewLayoutGuide key="safeArea" id="IvK-x1-DIB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="uPy-9v-zTi"/>
+                    <connections>
+                        <outlet property="profileNameLabel" destination="l2i-PQ-kUI" id="eJx-PS-McS"/>
+                        <outlet property="profileUsernameLabel" destination="aAj-07-qHy" id="8nH-Mk-YuK"/>
+                        <outlet property="totalMilesLabel" destination="uTD-6c-eoF" id="ACL-kY-ELL"/>
+                        <outlet property="totalRunsLabel" destination="ovx-NN-JAE" id="Qt6-fy-icW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POk-i5-bHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
