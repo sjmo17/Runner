@@ -28,7 +28,7 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
                 self.displayPins(latitudes: latitude, longitudes: longitude)
                 
                 let location = CLLocationCoordinate2D(latitude: latitude[0], longitude: longitude[0])
-                let span = MKCoordinateSpanMake(0.02, 0.02)
+                let span = MKCoordinateSpanMake(0.01, 0.01)
                 let region = MKCoordinateRegionMake(location, span)
                 self.routeMapView.setRegion(region, animated: true)
                 

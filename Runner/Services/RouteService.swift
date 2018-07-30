@@ -12,7 +12,7 @@ import CoreLocation
 import FirebaseDatabase
 
 struct RouteService { // FIREBASE
-    static func createRoute(name: String, latitudes: [Double], longitudes: [Double], distance: Double) {
+    static func createRoute(_ firUser: FIRUser, name: String, latitudes: [Double], longitudes: [Double], distance: Double) {
         let latRef = Database.database().reference().child("routes").child(name).child("latitudes")
         let longRef = Database.database().reference().child("routes").child(name).child("longitudes")
         
@@ -31,6 +31,9 @@ struct RouteService { // FIREBASE
         
         let distRef = Database.database().reference().child("routes").child(name)
         distRef.updateChildValues(["distance" : distance])
+        
+        let userRef = Database.database().reference().child("users").child(firUser.uid).child("routes")
+        userRef.updateChildValues(["route_\(name)": name])
     }
     
     static func getRouteLatitudes(routeName: String, completion: @escaping ([Double]?) -> Void) {

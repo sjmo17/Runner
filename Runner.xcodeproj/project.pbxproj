@@ -12,12 +12,16 @@
 		C327E187210920E400D79C92 /* ListRoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327E186210920E400D79C92 /* ListRoutesTableViewController.swift */; };
 		C32AC5C6210A690C00713B4C /* RouteSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32AC5C5210A690C00713B4C /* RouteSelectedViewController.swift */; };
 		C32AC5C8210A699F00713B4C /* RouteSelected.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32AC5C7210A699F00713B4C /* RouteSelected.storyboard */; };
+		C331BF7C210F7DB700DBBFCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331BF7B210F7DB700DBBFCE /* User.swift */; };
+		C331BF7E210F7FB500DBBFCE /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331BF7D210F7FB500DBBFCE /* CreateUsernameViewController.swift */; };
+		C331BF80210F871900DBBFCE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331BF7F210F871900DBBFCE /* UserService.swift */; };
+		C331BF82210FAD2800DBBFCE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331BF81210FAD2800DBBFCE /* ProfileViewController.swift */; };
+		C331BF84210FAE9800DBBFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C331BF83210FAE9800DBBFCE /* Assets.xcassets */; };
 		C39E0DC72107A44500A931F3 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E0DC62107A44500A931F3 /* Route.swift */; };
 		C39E0DCB2107A55E00A931F3 /* RouteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39E0DCA2107A55E00A931F3 /* RouteService.swift */; };
 		C3B3B2DB2107926F00448259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B3B2DA2107926F00448259 /* AppDelegate.swift */; };
 		C3B3B2DD2107926F00448259 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B3B2DC2107926F00448259 /* ViewController.swift */; };
 		C3B3B2E02107926F00448259 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B3B2DE2107926F00448259 /* Main.storyboard */; };
-		C3B3B2E22107927100448259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3B3B2E12107927100448259 /* Assets.xcassets */; };
 		C3B3B2E52107927100448259 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B3B2E32107927100448259 /* LaunchScreen.storyboard */; };
 		C3B3B2ED210797FE00448259 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3B3B2EC210797FE00448259 /* GoogleService-Info.plist */; };
 		C3B3B2F921079A6600448259 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B3B2F821079A6600448259 /* Login.storyboard */; };
@@ -36,13 +40,17 @@
 		C327E186210920E400D79C92 /* ListRoutesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRoutesTableViewController.swift; sourceTree = "<group>"; };
 		C32AC5C5210A690C00713B4C /* RouteSelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectedViewController.swift; sourceTree = "<group>"; };
 		C32AC5C7210A699F00713B4C /* RouteSelected.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RouteSelected.storyboard; sourceTree = "<group>"; };
+		C331BF7B210F7DB700DBBFCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C331BF7D210F7FB500DBBFCE /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
+		C331BF7F210F871900DBBFCE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		C331BF81210FAD2800DBBFCE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C331BF83210FAE9800DBBFCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C39E0DC62107A44500A931F3 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C39E0DCA2107A55E00A931F3 /* RouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteService.swift; sourceTree = "<group>"; };
 		C3B3B2D72107926F00448259 /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B3B2DA2107926F00448259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3B3B2DC2107926F00448259 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C3B3B2DF2107926F00448259 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C3B3B2E12107927100448259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3B3B2E42107927100448259 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3B3B2E62107927100448259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3B3B2EC210797FE00448259 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -103,9 +111,9 @@
 				C3B3B2F3210799DB00448259 /* Helpers */,
 				C3B3B2F1210799C000448259 /* Models */,
 				C3B3B2F2210799D200448259 /* Services */,
-				C3B3B2E12107927100448259 /* Assets.xcassets */,
 				C3B3B2E62107927100448259 /* Info.plist */,
 				C3B3B2EC210797FE00448259 /* GoogleService-Info.plist */,
+				C331BF83210FAE9800DBBFCE /* Assets.xcassets */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 		C3B3B2F1210799C000448259 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C331BF7B210F7DB700DBBFCE /* User.swift */,
 				C39E0DC62107A44500A931F3 /* Route.swift */,
 			);
 			path = Models;
@@ -134,6 +143,7 @@
 		C3B3B2F2210799D200448259 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C331BF7F210F871900DBBFCE /* UserService.swift */,
 				C39E0DCA2107A55E00A931F3 /* RouteService.swift */,
 			);
 			path = Services;
@@ -149,6 +159,8 @@
 		C3B3B2F4210799E700448259 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C331BF81210FAD2800DBBFCE /* ProfileViewController.swift */,
+				C331BF7D210F7FB500DBBFCE /* CreateUsernameViewController.swift */,
 				C32AC5C5210A690C00713B4C /* RouteSelectedViewController.swift */,
 				C327E186210920E400D79C92 /* ListRoutesTableViewController.swift */,
 				C327E1822108FAD000D79C92 /* MainTabBarController.swift */,
@@ -252,9 +264,9 @@
 			files = (
 				C3B3B2E52107927100448259 /* LaunchScreen.storyboard in Resources */,
 				C32AC5C8210A699F00713B4C /* RouteSelected.storyboard in Resources */,
-				C3B3B2E22107927100448259 /* Assets.xcassets in Resources */,
 				C3B3B2E02107926F00448259 /* Main.storyboard in Resources */,
 				C3B3B2FD2107A04D00448259 /* RouteCreation.storyboard in Resources */,
+				C331BF84210FAE9800DBBFCE /* Assets.xcassets in Resources */,
 				C3B3B2F921079A6600448259 /* Login.storyboard in Resources */,
 				C3B3B2ED210797FE00448259 /* GoogleService-Info.plist in Resources */,
 			);
@@ -334,12 +346,16 @@
 				C3B3B2FB21079AF500448259 /* LoginViewController.swift in Sources */,
 				C3B3B2DD2107926F00448259 /* ViewController.swift in Sources */,
 				C327E1832108FAD000D79C92 /* MainTabBarController.swift in Sources */,
+				C331BF82210FAD2800DBBFCE /* ProfileViewController.swift in Sources */,
 				C39E0DC72107A44500A931F3 /* Route.swift in Sources */,
 				C327E18521091F5900D79C92 /* RouteTableViewCell.swift in Sources */,
+				C331BF80210F871900DBBFCE /* UserService.swift in Sources */,
 				C327E187210920E400D79C92 /* ListRoutesTableViewController.swift in Sources */,
 				C3B3B2DB2107926F00448259 /* AppDelegate.swift in Sources */,
+				C331BF7E210F7FB500DBBFCE /* CreateUsernameViewController.swift in Sources */,
 				C39E0DCB2107A55E00A931F3 /* RouteService.swift in Sources */,
 				C32AC5C6210A690C00713B4C /* RouteSelectedViewController.swift in Sources */,
+				C331BF7C210F7DB700DBBFCE /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

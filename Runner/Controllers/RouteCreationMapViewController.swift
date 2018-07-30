@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import FirebaseDatabase
+import FirebaseAuth
 
 protocol RouteCreationMapProtocol {
     func handleTap(gestureRecognizer: UITapGestureRecognizer)
@@ -47,7 +48,7 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
         let msLocation = CLLocationCoordinate2D(latitude: 37.773514, longitude: -122.417807)
 //        let location = CLLocationCoordinate2D(latitude: userLat, longitude: userLong)
         
-        let span = MKCoordinateSpanMake(0.02, 0.02)
+        let span = MKCoordinateSpanMake(0.01, 0.01)
         let region = MKCoordinateRegionMake(msLocation, span)
         routeMap.setRegion(region, animated: true)
         
@@ -62,7 +63,8 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
     
     @IBAction func saveButton(_ sender: Any) {
         let distance = calculateDistance()
-        RouteService.createRoute(name: routeName, latitudes: latitudes, longitudes: longitudes, distance: distance)
+        guard let firUser = Auth.auth().currentUser else { return }
+        RouteService.createRoute(firUser, name: routeName, latitudes: latitudes, longitudes: longitudes, distance: distance)
     }
     
     @IBAction func handleTap(recognizer: UITapGestureRecognizer) {

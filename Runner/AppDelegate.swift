@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-//        let storyboard = UIStoryboard(name: "RouteCreation", bundle: .main)
-//        if let initialViewControleler = storyboard.instantiateInitialViewController() {
-//            window?.rootViewController = initialViewControleler
-//            window?.makeKeyAndVisible()
-//        }
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        if let initialViewControleler = storyboard.instantiateInitialViewController() {
+            window?.rootViewController = initialViewControleler
+            window?.makeKeyAndVisible()
+        }
         
         return true
     }
