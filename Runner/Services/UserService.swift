@@ -30,7 +30,7 @@ struct UserService {
     }
     
     static func getMilesRun(_ firUser: FIRUser, completion: @escaping (Double?) -> Void) {
-        var returnMilesRun = -1.0
+        var returnMilesRun = 0.0
         
         let ref = Database.database().reference().child("users").child(firUser.uid)
         ref.observeSingleEvent(of: .value) { (snapshot) in
@@ -40,10 +40,29 @@ struct UserService {
                 returnMilesRun = milesRun as! Double
             }
             
-            if returnMilesRun != -1 {
+            if returnMilesRun != 0.0 {
                 completion (returnMilesRun)
             } else {
-                return completion(nil)
+                return completion(0.0)
+            }
+        }
+    }
+    
+    static func getTotalRuns(_ firUser: FIRUser, completion: @escaping (Int?) -> Void) {
+        var returnTotalRuns = 0
+        
+        let ref = Database.database().reference().child("users").child(firUser.uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let insideChild = snapshot.value as? [String : Any]
+            if let inside = insideChild {
+                let totalRuns = inside["runs"]
+                returnTotalRuns = totalRuns as! Int
+            }
+            
+            if returnTotalRuns != 0 {
+                completion(returnTotalRuns)
+            } else {
+                return completion(0)
             }
         }
     }

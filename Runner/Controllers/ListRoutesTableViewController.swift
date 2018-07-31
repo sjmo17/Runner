@@ -29,7 +29,12 @@ class ListRoutesTableViewController: UIViewController {
         //self.table.delegate = self
         reload()
 
-        // Do any additional setup after loading the view.
+        // background image for routesTableView
+        let backgroundImage = UIImage(named: "nightskysmall.png")
+        let imageView = UIImageView(image: backgroundImage)
+        self.routesTableView.backgroundView = imageView
+        routesTableView.tableFooterView = UIView(frame: CGRect.zero)
+        //imageView.contentMode = .scaleAspectFit
     }
 
     @IBAction func unwindToListRoutes(segue: UIStoryboardSegue) {

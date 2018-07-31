@@ -17,6 +17,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var totalMilesLabel: UILabel!
     @IBOutlet weak var totalRunsLabel: UILabel!
     
+    //var milesrun = 0.0
+    //var runs = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +33,16 @@ class ProfileViewController: UIViewController {
         
         let name = Auth.auth().currentUser?.displayName
         profileNameLabel.text = name
+        
+        UserService.getMilesRun(firUser) { (miles) in
+            //.milesrun = miles!
+            self.totalMilesLabel.text = String(miles!)
+        }
+        UserService.getTotalRuns(firUser) { (runs) in
+            //self.runs = runs!
+            self.totalRunsLabel.text = String(runs!)
+        }
+        
     }
     
     
