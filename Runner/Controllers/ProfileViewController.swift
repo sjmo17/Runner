@@ -28,6 +28,8 @@ class ProfileViewController: UIViewController {
             }
         }
         
+        let name = Auth.auth().currentUser?.displayName
+        profileNameLabel.text = name
     }
     
     

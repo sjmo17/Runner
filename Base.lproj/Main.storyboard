@@ -26,7 +26,7 @@
                                     <navigationItem title="Profile" id="VMP-VV-KPI"/>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nLi-1k-viz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultprofilepicture" translatesAutoresizingMaskIntoConstraints="NO" id="nLi-1k-viz">
                                 <rect key="frame" x="5" y="69" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="cEV-Ex-HMs"/>
@@ -42,7 +42,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAj-07-qHy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAj-07-qHy">
                                         <rect key="frame" x="0.0" y="52.5" width="240" height="52.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
@@ -125,10 +125,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="uPy-9v-zTi"/>
                     <connections>
-                        <outlet property="profileNameLabel" destination="l2i-PQ-kUI" id="eJx-PS-McS"/>
-                        <outlet property="profileUsernameLabel" destination="aAj-07-qHy" id="8nH-Mk-YuK"/>
-                        <outlet property="totalMilesLabel" destination="uTD-6c-eoF" id="ACL-kY-ELL"/>
-                        <outlet property="totalRunsLabel" destination="ovx-NN-JAE" id="Qt6-fy-icW"/>
+                        <outlet property="profileNameLabel" destination="l2i-PQ-kUI" id="UJd-Nx-Kun"/>
+                        <outlet property="profileUsernameLabel" destination="aAj-07-qHy" id="zvJ-ME-OKr"/>
+                        <outlet property="totalMilesLabel" destination="uTD-6c-eoF" id="T9M-WU-SN0"/>
+                        <outlet property="totalRunsLabel" destination="ovx-NN-JAE" id="klw-qV-Api"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POk-i5-bHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,4 +289,7 @@
             <point key="canvasLocation" x="-492" y="-227"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultprofilepicture" width="240" height="240"/>
+    </resources>
 </document>
