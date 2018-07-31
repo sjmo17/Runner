@@ -17,7 +17,7 @@ protocol DidTapCellProtocol {
 class ListRoutesTableViewController: UIViewController {
 
     var routes: [String]?
-    var distances: [Double]?
+    var distances = [Double]()
     var delegate: DidTapCellProtocol?
     
     @IBOutlet weak var routesTableView: UITableView!
@@ -39,11 +39,20 @@ class ListRoutesTableViewController: UIViewController {
 
 extension ListRoutesTableViewController {
     func reload() {
+        distances.removeAll()
         guard let firUser = Auth.auth().currentUser else { return }
         RouteService.getUserRoutes(firUser) { (routes) in
             self.routes = routes
-            //self.distances = routeDistances
-            self.routesTableView.reloadData()
+            if routes != nil {
+                for route in routes! {
+                    RouteService.getRouteDistance2(routeName: route, completion: { (distance) in
+                        self.distances.append(distance!)
+                        if self.distances.count == self.routes?.count {
+                            self.routesTableView.reloadData()
+                        }
+                    })
+                }
+            }
         }
     }
 }
@@ -68,8 +77,8 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         if let routes = self.routes {
             let route = routes[indexPath.row]
             cell.routeNameLabel.text = route
-            //cell.routeDistanceLabel.text = "miles: \(distances![indexPath.row])"
-            cell.routeDistanceLabel.text = "miles: not implemented"
+            cell.routeDistanceLabel.text = "miles: \(distances[indexPath.row])"
+            //cell.routeDistanceLabel.text = "miles: not implemented"
             cell.routeLocationLabel.text = "testLocation"
         }
         return cell

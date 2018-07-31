@@ -107,4 +107,44 @@ struct RouteService { // FIREBASE
             }
         }
     }
+    
+    static func getRouteDistance(routeNames: [String], completion: @escaping ([Double]?) -> Void) {
+        var returnDistances = [Double]()
+        
+        for route in routeNames {
+            let ref = Database.database().reference().child("routes").child(route)
+            ref.observeSingleEvent(of: .value) { (snapshot) in
+                
+                let insideChild = snapshot.value as? [String : Any]
+                if let inside = insideChild {
+                    let distance = inside["distance"]
+                    returnDistances.append(distance as! Double)
+                }
+            }
+        }
+        if returnDistances.count > 0 {
+            completion (returnDistances)
+        } else {
+            return completion(nil)
+        }
+    }
+    
+    static func getRouteDistance2(routeName: String, completion: @escaping (Double?) -> Void) {
+        var returnDistance = 0.0
+        
+        let ref = Database.database().reference().child("routes").child(routeName)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let insideChild = snapshot.value as? [String : Any]
+            if let inside = insideChild {
+                let distance = inside["distance"]
+                returnDistance = distance as! Double
+            }
+            
+            if returnDistance != 0.0 {
+                completion (returnDistance)
+            } else {
+                return completion(nil)
+            }
+        }
+    }
 }

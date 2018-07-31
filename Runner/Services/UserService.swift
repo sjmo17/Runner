@@ -29,4 +29,22 @@ struct UserService {
         }
     }
     
+    static func getMilesRun(_ firUser: FIRUser, completion: @escaping (Double?) -> Void) {
+        var returnMilesRun = -1.0
+        
+        let ref = Database.database().reference().child("users").child(firUser.uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let insideChild = snapshot.value as? [String : Any]
+            if let inside = insideChild {
+                let milesRun = inside["miles_run"]
+                returnMilesRun = milesRun as! Double
+            }
+            
+            if returnMilesRun != -1 {
+                completion (returnMilesRun)
+            } else {
+                return completion(nil)
+            }
+        }
+    }
 }
