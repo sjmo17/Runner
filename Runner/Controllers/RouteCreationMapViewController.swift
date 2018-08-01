@@ -139,5 +139,9 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
         fatalError("Something wrong...")
     }
     
-    
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        let annotationView = MKPinAnnotationView()
+//        annotationView.pinTintColor = .blue
+//        return annotationView
+//    }
 }

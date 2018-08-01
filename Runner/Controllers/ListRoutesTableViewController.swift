@@ -88,7 +88,9 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         if let routes = self.routes {
             let route = routes[indexPath.row]
             cell.routeNameLabel.text = route
-            cell.routeDistanceLabel.text = "miles: \(distances[indexPath.row])"
+            var distance = distances[indexPath.row]
+            distance = distance - distance.truncatingRemainder(dividingBy: 0.001)
+            cell.routeDistanceLabel.text = "miles: \(distance)"
             cell.routeLocationLabel.text = "\(addresses[indexPath.row])"
         }
         return cell
