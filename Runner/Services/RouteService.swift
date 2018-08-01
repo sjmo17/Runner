@@ -32,6 +32,16 @@ struct RouteService { // FIREBASE
         let distRef = Database.database().reference().child("routes").child(name)
         distRef.updateChildValues(["distance" : distance])
         
+        CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitudes[0], longitude: longitudes[0])) { (placemarks, error) in
+            guard let placemark = placemarks?.first, error == nil else {
+                return }
+            let address = placemark.thoroughfare ?? ""
+            let address1 = placemark.subThoroughfare ?? ""
+            let city = placemark.locality ?? ""
+            let location = "\(address1) \(address), \(city)"
+            let locationRef = Database.database().reference().child("routes").child(name)
+            locationRef.updateChildValues(["location" : location])
+        }
         let userRef = Database.database().reference().child("users").child(firUser.uid).child("routes")
         userRef.updateChildValues(["route_\(name)": name])
     }
@@ -108,28 +118,7 @@ struct RouteService { // FIREBASE
         }
     }
     
-    static func getRouteDistance(routeNames: [String], completion: @escaping ([Double]?) -> Void) {
-        var returnDistances = [Double]()
-        
-        for route in routeNames {
-            let ref = Database.database().reference().child("routes").child(route)
-            ref.observeSingleEvent(of: .value) { (snapshot) in
-                
-                let insideChild = snapshot.value as? [String : Any]
-                if let inside = insideChild {
-                    let distance = inside["distance"]
-                    returnDistances.append(distance as! Double)
-                }
-            }
-        }
-        if returnDistances.count > 0 {
-            completion (returnDistances)
-        } else {
-            return completion(nil)
-        }
-    }
-    
-    static func getRouteDistance2(routeName: String, completion: @escaping (Double?) -> Void) {
+    static func getRouteDistance(routeName: String, completion: @escaping (Double?) -> Void) {
         var returnDistance = 0.0
         
         let ref = Database.database().reference().child("routes").child(routeName)
@@ -144,6 +133,25 @@ struct RouteService { // FIREBASE
                 completion (returnDistance)
             } else {
                 return completion(nil)
+            }
+        }
+    }
+    
+    static func getRouteLocation(routeName: String, completion: @escaping (String?) -> Void) {
+        var returnLocation = ""
+        
+        let ref = Database.database().reference().child("routes").child(routeName)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let insideChild = snapshot.value as? [String : Any]
+            if let inside = insideChild {
+                guard let location = inside["location"] else { return }
+                returnLocation = location as! String
+            }
+            
+            if returnLocation != "" {
+                completion (returnLocation)
+            } else {
+                return completion("Unknown Address")
             }
         }
     }

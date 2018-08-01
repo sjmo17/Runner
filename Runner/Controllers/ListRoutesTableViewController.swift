@@ -19,6 +19,7 @@ class ListRoutesTableViewController: UIViewController {
     var routes: [String]?
     var distances = [Double]()
     var delegate: DidTapCellProtocol?
+    var addresses = [String]()
     
     @IBOutlet weak var routesTableView: UITableView!
     
@@ -45,16 +46,21 @@ class ListRoutesTableViewController: UIViewController {
 extension ListRoutesTableViewController {
     func reload() {
         distances.removeAll()
+        addresses.removeAll()
         guard let firUser = Auth.auth().currentUser else { return }
         RouteService.getUserRoutes(firUser) { (routes) in
             self.routes = routes
             if routes != nil {
                 for route in routes! {
-                    RouteService.getRouteDistance2(routeName: route, completion: { (distance) in
+                    
+                    RouteService.getRouteDistance(routeName: route, completion: { (distance) in
                         self.distances.append(distance!)
-                        if self.distances.count == self.routes?.count {
-                            self.routesTableView.reloadData()
-                        }
+                        RouteService.getRouteLocation(routeName: route, completion: { (location) in
+                            self.addresses.append(location!)
+                            if self.distances.count == self.routes?.count && self.addresses.count == self.routes?.count {
+                                self.routesTableView.reloadData()
+                            }
+                        })
                     })
                 }
             }
@@ -83,8 +89,7 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
             let route = routes[indexPath.row]
             cell.routeNameLabel.text = route
             cell.routeDistanceLabel.text = "miles: \(distances[indexPath.row])"
-            //cell.routeDistanceLabel.text = "miles: not implemented"
-            cell.routeLocationLabel.text = "testLocation"
+            cell.routeLocationLabel.text = "\(addresses[indexPath.row])"
         }
         return cell
     }
