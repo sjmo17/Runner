@@ -13,7 +13,7 @@ import FirebaseDatabase
 struct UserService {
     static func create(_ firUser: FIRUser, username: String, completion: @escaping (User?) -> Void) {
         let userAttrs = ["username" : username,
-                         "miles_run" : 0,
+                         "miles_run" : 0.0,
                          "runs" : 0] as [String : Any]
         let ref = Database.database().reference().child("users").child(firUser.uid)
         ref.setValue(userAttrs) { (error, ref) in
@@ -63,6 +63,31 @@ struct UserService {
                 completion(returnTotalRuns)
             } else {
                 return completion(0)
+            }
+        }
+    }
+    
+    static func addToMiles(_ firUser: FIRUser, routeDistance: Double) {
+        let ref = Database.database().reference().child("users").child(firUser.uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let insideChild = snapshot.value as? [String : Any?]
+            if let inside = insideChild {
+                var milesRun = inside["miles_run"] as! Double
+                milesRun = milesRun + routeDistance
+                ref.updateChildValues(["miles_run" : milesRun])
+            }
+            
+        }
+    }
+    
+    static func addToRuns(_ firUser: FIRUser) {
+        let ref = Database.database().reference().child("users").child(firUser.uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            let insideChild = snapshot.value as? [String : Any?]
+            if let inside = insideChild {
+                var runs = inside["runs"] as! Int
+                runs = runs + 1
+                ref.updateChildValues(["runs" : runs])
             }
         }
     }

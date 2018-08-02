@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import FirebaseDatabase
+import FirebaseAuth
 
 class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
 
@@ -43,6 +44,15 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
             }
         }
         navigationItem.title = routeName
+    }
+    @IBAction func runButtonTapped(_ sender: Any) {
+        guard let firUser = Auth.auth().currentUser else { return }
+        guard let routeName = navigationItem.title else { return }
+        RouteService.getRouteDistance(routeName: routeName) { (distance) in
+            guard let distance = distance else { return }
+            UserService.addToMiles(firUser, routeDistance: distance)
+        }
+        UserService.addToRuns(firUser)
     }
     
     func getLatitudes(nameOfRoute: String, completion: @escaping ([Double]) -> Void) {

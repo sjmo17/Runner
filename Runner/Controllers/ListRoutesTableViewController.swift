@@ -31,10 +31,10 @@ class ListRoutesTableViewController: UIViewController {
         reload()
 
         // background image for routesTableView
-        let backgroundImage = UIImage(named: "nightskysmall.png")
-        let imageView = UIImageView(image: backgroundImage)
-        self.routesTableView.backgroundView = imageView
-        routesTableView.tableFooterView = UIView(frame: CGRect.zero)
+//        let backgroundImage = UIImage(named: "nightskysmall.png")
+//        let imageView = UIImageView(image: backgroundImage)
+//        self.routesTableView.backgroundView = imageView
+//        routesTableView.tableFooterView = UIView(frame: CGRect.zero)
         //imageView.contentMode = .scaleAspectFit
     }
 

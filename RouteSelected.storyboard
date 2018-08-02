@@ -39,6 +39,12 @@
                                 <segue destination="WdV-uf-Vpg" kind="unwind" identifier="unwindToListRoutes" unwindAction="unwindToListRoutesWithSegue:" id="jxF-Gx-ddk"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="RUN" id="0zb-SQ-sD4">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="runButtonTapped:" destination="rFF-MJ-six" id="96N-q5-Nkd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="routeMapView" destination="uEl-sp-NuQ" id="MhN-e0-yrP"/>
