@@ -28,37 +28,48 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
+//        self.locationManager.requestAlwaysAuthorization()
+//        self.locationManager.requestWhenInUseAuthorization()
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//            locationManager.startUpdatingLocation()
+//        }
+        
+        // latitude and longitude of user's current location
+        let userLocation = routeMap.userLocation
+        let userCoordinate = userLocation.coordinate
+        
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegionMake(userCoordinate, span)
+        routeMap.setRegion(region, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         routeMap.showsUserLocation = true
         routeMap.delegate = self
         
-        // latitude and longitude of user's current location
-//        let userLocation = routeMap.userLocation
-//        let userLat = userLocation.coordinate.latitude
-//        let userLong = userLocation.coordinate.longitude
-        
-        // set location with coordinates
-        let msLocation = CLLocationCoordinate2D(latitude: 37.773514, longitude: -122.417807)
-//        let location = CLLocationCoordinate2D(latitude: userLat, longitude: userLong)
-        
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegionMake(msLocation, span)
-        routeMap.setRegion(region, animated: true)
-        
-//        let userLocation = routeMap.userLocation
-//        let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-//        let span = MKCoordinateSpanMake(0.02, 0.02)
-//        let region = MKCoordinateRegionMake(location, span)
-//        self.routeMap.setRegion(region, animated: true)
-        
         showInputDialog()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        appMapViewMemoryFix()
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+//        appMapViewMemoryFix()
+//    }
+    
+    func appMapViewMemoryFix() {
+        routeMap.showsUserLocation = false
+        routeMap.delegate = nil
+        routeMap.removeFromSuperview()
+        routeMap = nil
     }
     
     @IBAction func saveButton(_ sender: Any) {
@@ -100,13 +111,16 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
     
     func showInputDialog() {
         let alertController = UIAlertController(title: "Route Name", message: "Give a name to your custom route.", preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "OK", style: .default) { (_) in
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak self] (_) in
             let name = alertController.textFields?[0].text
-            self.routeName = name!
+            self?.routeName = name!
         }
+        
+        
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         alertController.addTextField { (textField) in
             textField.placeholder = "Enter a name"
         }
@@ -144,4 +158,26 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
 //        annotationView.pinTintColor = .blue
 //        return annotationView
 //    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        
+        if let location = locations.last{
+            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.routeMap.setRegion(region, animated: true)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegionMake(mapView.userLocation.coordinate, span)
+        mapView.setRegion(region, animated: true)
+    }
 }

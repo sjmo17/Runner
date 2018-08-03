@@ -155,4 +155,12 @@ struct RouteService { // FIREBASE
             }
         }
     }
+    
+    static func deleteRoute(_ firUser : FIRUser, routeName: String) {
+        let routeRef = Database.database().reference().child("routes")
+        routeRef.child(routeName).removeValue()
+        
+        let userRef = Database.database().reference().child("users").child(firUser.uid).child("routes")
+        userRef.child("route_\(routeName)").removeValue()
+    }
 }

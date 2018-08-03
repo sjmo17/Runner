@@ -27,12 +27,12 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
         getLatitudes(nameOfRoute: routeName) { (latitude) in
             self.getLongitudes(nameOfRoute: self.routeName, completion: { (longitude) in
                 self.displayPins(latitudes: latitude, longitudes: longitude)
-                
+
                 let location = CLLocationCoordinate2D(latitude: latitude[0], longitude: longitude[0])
                 let span = MKCoordinateSpanMake(0.01, 0.01)
                 let region = MKCoordinateRegionMake(location, span)
                 self.routeMapView.setRegion(region, animated: true)
-                
+
                 if latitude.count > 1 {
                     for index in 0...latitude.count - 2 {
                         self.drawLine(latitude1: latitude[index], longitude1: longitude[index], latitude2: latitude[index + 1], longitude2: longitude[index + 1])

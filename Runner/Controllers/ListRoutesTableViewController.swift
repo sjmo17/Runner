@@ -63,6 +63,8 @@ extension ListRoutesTableViewController {
                         })
                     })
                 }
+            } else {
+                self.routesTableView.reloadData()
             }
         }
     }
@@ -100,6 +102,18 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         if delegate != nil {
             let cell = tableView.cellForRow(at: indexPath) as! RouteTableViewCell
             delegate?.didTapCell(nameOfRoute: cell.routeNameLabel.text!)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("deleted")
+//            self.routesTableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            guard let firUser = Auth.auth().currentUser else { return }
+            let cell = tableView.cellForRow(at: indexPath) as! RouteTableViewCell
+            RouteService.deleteRoute(firUser, routeName: cell.routeNameLabel.text!)
+            reload()
         }
     }
     
