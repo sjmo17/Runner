@@ -12,10 +12,10 @@ import FirebaseDatabase
 
 struct UserService {
     static func create(_ firUser: FIRUser, username: String, completion: @escaping (User?) -> Void) {
-        let userAttrs = ["username" : username,
-                         "miles_run" : 0.0,
-                         "runs" : 0] as [String : Any]
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let userAttrs = [Constants.Keys.username : username,
+                         Constants.Keys.miles_run : 0.0,
+                         Constants.Keys.runs : 0] as [String : Any]
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid)
         ref.setValue(userAttrs) { (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
@@ -32,11 +32,11 @@ struct UserService {
     static func getMilesRun(_ firUser: FIRUser, completion: @escaping (Double?) -> Void) {
         var returnMilesRun = 0.0
         
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             let insideChild = snapshot.value as? [String : Any]
             if let inside = insideChild {
-                let milesRun = inside["miles_run"]
+                let milesRun = inside[Constants.Keys.miles_run]
                 returnMilesRun = milesRun as! Double
             }
             
@@ -51,11 +51,11 @@ struct UserService {
     static func getTotalRuns(_ firUser: FIRUser, completion: @escaping (Int?) -> Void) {
         var returnTotalRuns = 0
         
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             let insideChild = snapshot.value as? [String : Any]
             if let inside = insideChild {
-                let totalRuns = inside["runs"]
+                let totalRuns = inside[Constants.Keys.runs]
                 returnTotalRuns = totalRuns as! Int
             }
             
@@ -68,35 +68,35 @@ struct UserService {
     }
     
     static func addToMiles(_ firUser: FIRUser, routeDistance: Double) {
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             let insideChild = snapshot.value as? [String : Any?]
             if let inside = insideChild {
-                var milesRun = inside["miles_run"] as! Double
+                var milesRun = inside[Constants.Keys.miles_run] as! Double
                 milesRun = milesRun + routeDistance
-                ref.updateChildValues(["miles_run" : milesRun])
+                ref.updateChildValues([Constants.Keys.miles_run : milesRun])
             }
             
         }
     }
     
     static func addToRuns(_ firUser: FIRUser) {
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             let insideChild = snapshot.value as? [String : Any?]
             if let inside = insideChild {
-                var runs = inside["runs"] as! Int
+                var runs = inside[Constants.Keys.runs] as! Int
                 runs = runs + 1
-                ref.updateChildValues(["runs" : runs])
+                ref.updateChildValues([Constants.Keys.runs : runs])
             }
         }
     }
     
     static func resetStatistics(_ firUser: FIRUser) {
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid)
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            ref.updateChildValues(["miles_run" : 0.0])
-            ref.updateChildValues(["runs" : 0])
+            ref.updateChildValues([Constants.Keys.miles_run : 0.0])
+            ref.updateChildValues([Constants.Keys.runs : 0])
         }
     }
 }

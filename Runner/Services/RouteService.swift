@@ -13,8 +13,8 @@ import FirebaseDatabase
 
 struct RouteService { // FIREBASE
     static func createRoute(_ firUser: FIRUser, name: String, latitudes: [Double], longitudes: [Double], distance: Double) {
-        let latRef = Database.database().reference().child("routes").child(name).child("latitudes")
-        let longRef = Database.database().reference().child("routes").child(name).child("longitudes")
+        let latRef = Database.database().reference().child(Constants.Keys.routes).child(name).child(Constants.Keys.latitudes)
+        let longRef = Database.database().reference().child(Constants.Keys.routes).child(name).child(Constants.Keys.longitudes)
         
         var latDict = [String : Double]()
         var longDict = [String : Double]()
@@ -29,8 +29,8 @@ struct RouteService { // FIREBASE
         latRef.updateChildValues(latDict)
         longRef.updateChildValues(longDict)
         
-        let distRef = Database.database().reference().child("routes").child(name)
-        distRef.updateChildValues(["distance" : distance])
+        let distRef = Database.database().reference().child(Constants.Keys.routes).child(name)
+        distRef.updateChildValues([Constants.Keys.distance : distance])
         
         CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: latitudes[0], longitude: longitudes[0])) { (placemarks, error) in
             guard let placemark = placemarks?.first, error == nil else {
@@ -39,15 +39,15 @@ struct RouteService { // FIREBASE
             let address1 = placemark.subThoroughfare ?? ""
             let city = placemark.locality ?? ""
             let location = "\(address1) \(address), \(city)"
-            let locationRef = Database.database().reference().child("routes").child(name)
-            locationRef.updateChildValues(["location" : location])
+            let locationRef = Database.database().reference().child(Constants.Keys.routes).child(name)
+            locationRef.updateChildValues([Constants.Keys.location : location])
         }
-        let userRef = Database.database().reference().child("users").child(firUser.uid).child("routes")
+        let userRef = Database.database().reference().child(Constants.Keys.users).child(firUser.uid).child(Constants.Keys.routes)
         userRef.updateChildValues(["route_\(name)": name])
     }
     
     static func getRouteLatitudes(routeName: String, completion: @escaping ([Double]?) -> Void) {
-        let ref = Database.database().reference().child("routes").child(routeName).child("latitudes")
+        let ref = Database.database().reference().child(Constants.Keys.routes).child(routeName).child(Constants.Keys.latitudes)
         
         var latitudesArray = [Double]()
         
@@ -69,7 +69,7 @@ struct RouteService { // FIREBASE
     }
     
     static func getRouteLongitudes(routeName: String, completion: @escaping ([Double]?) -> Void) {
-        let ref = Database.database().reference().child("routes").child(routeName).child("longitudes")
+        let ref = Database.database().reference().child(Constants.Keys.routes).child(routeName).child(Constants.Keys.longitudes)
         
         var longitudesArray = [Double]()
         
@@ -91,7 +91,7 @@ struct RouteService { // FIREBASE
     }
     
     static func getUserRoutes(_ firUser: FIRUser, completion: @escaping ([String]?) -> Void) {
-        let ref = Database.database().reference().child("users").child(firUser.uid).child("routes")
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid).child(Constants.Keys.routes)
         
         var returnRouteNames = [String]()
         //var returnDistance = [Double]()
@@ -121,11 +121,11 @@ struct RouteService { // FIREBASE
     static func getRouteDistance(routeName: String, completion: @escaping (Double?) -> Void) {
         var returnDistance = 0.0
         
-        let ref = Database.database().reference().child("routes").child(routeName)
+        let ref = Database.database().reference().child(Constants.Keys.routes).child(routeName)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             let insideChild = snapshot.value as? [String : Any]
             if let inside = insideChild {
-                let distance = inside["distance"]
+                let distance = inside[Constants.Keys.distance]
                 returnDistance = distance as! Double
             }
             
@@ -140,11 +140,11 @@ struct RouteService { // FIREBASE
     static func getRouteLocation(routeName: String, completion: @escaping (String?) -> Void) {
         var returnLocation = ""
         
-        let ref = Database.database().reference().child("routes").child(routeName)
+        let ref = Database.database().reference().child(Constants.Keys.routes).child(routeName)
         ref.observeSingleEvent(of: .value) { (snapshot) in
             let insideChild = snapshot.value as? [String : Any]
             if let inside = insideChild {
-                guard let location = inside["location"] else { return }
+                guard let location = inside[Constants.Keys.location] else { return }
                 returnLocation = location as! String
             }
             
@@ -157,10 +157,10 @@ struct RouteService { // FIREBASE
     }
     
     static func deleteRoute(_ firUser : FIRUser, routeName: String) {
-        let routeRef = Database.database().reference().child("routes")
+        let routeRef = Database.database().reference().child(Constants.Keys.routes)
         routeRef.child(routeName).removeValue()
         
-        let userRef = Database.database().reference().child("users").child(firUser.uid).child("routes")
+        let userRef = Database.database().reference().child(Constants.Keys.users).child(firUser.uid).child(Constants.Keys.routes)
         userRef.child("route_\(routeName)").removeValue()
     }
 }

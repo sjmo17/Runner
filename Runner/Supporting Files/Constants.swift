@@ -16,6 +16,13 @@ struct Constants {
     struct Keys {
         static let users = "users"
         static let username = "username"
+        static let miles_run = "miles_run"
+        static let runs = "runs"
+        static let routes = "routes"
+        static let latitudes = "latitudes"
+        static let longitudes = "longitudes"
+        static let distance = "distance"
+        static let location = "location"
     }
     
     struct Storyboards {
