@@ -30,7 +30,7 @@ class CreateUsernameViewController: UIViewController {
             guard let user = user else { return }
             User.setCurrent(user, writeToUserDefaults: true)
             
-            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            let storyboard = UIStoryboard(name: Constants.Storyboards.Main, bundle: .main)
             if let initialViewController = storyboard.instantiateInitialViewController() {
                 self.view.window?.rootViewController = initialViewController
                 self.view.window?.makeKeyAndVisible()

@@ -29,13 +29,6 @@ class ListRoutesTableViewController: UIViewController {
         self.routesTableView.dataSource = self
         //self.table.delegate = self
         reload()
-
-        // background image for routesTableView
-//        let backgroundImage = UIImage(named: "nightskysmall.png")
-//        let imageView = UIImageView(image: backgroundImage)
-//        self.routesTableView.backgroundView = imageView
-//        routesTableView.tableFooterView = UIView(frame: CGRect.zero)
-        //imageView.contentMode = .scaleAspectFit
     }
 
     @IBAction func unwindToListRoutes(segue: UIStoryboardSegue) {
@@ -85,7 +78,7 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "routeCell", for: indexPath) as! RouteTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.routeCell, for: indexPath) as! RouteTableViewCell
         
         if let routes = self.routes {
             let route = routes[indexPath.row]
@@ -107,7 +100,6 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("deleted")
 //            self.routesTableView.deleteRows(at: [indexPath], with: .automatic)
             
             guard let firUser = Auth.auth().currentUser else { return }
@@ -121,10 +113,6 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         guard let identifier = segue.identifier else { return }
         
         switch identifier {
-        case "addRoute":
-            print("addRoute button clicked")
-//            let vc = segue.destination as! RouteCreationMapViewController
-//            vc.delegate = self
             
         case "toRouteView":
             if let indexPath = self.routesTableView.indexPathForSelectedRow {
@@ -134,7 +122,6 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
                 let vc = nav.topViewController as! RouteSelectedViewController
                 vc.routeName = cell.routeNameLabel.text!
             }
-            print("toRouteView")
             
         default:
             print("unexpected segue identifier")

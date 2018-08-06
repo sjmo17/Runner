@@ -106,6 +106,14 @@
                                     <constraint firstAttribute="height" constant="1" id="0Oc-ZP-eT0"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="com-D9-5rV">
+                                <rect key="frame" x="255" y="69" width="120" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Reset Statistics"/>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="nQQ-U1-S7z" eventType="touchUpInside" id="4dS-nA-y6i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -117,6 +125,7 @@
                             <constraint firstItem="vap-29-geM" firstAttribute="top" secondItem="IvK-x1-DIB" secondAttribute="top" id="IDd-f8-4Bf"/>
                             <constraint firstItem="WPT-NK-h0d" firstAttribute="top" secondItem="nLi-1k-viz" secondAttribute="bottom" constant="17" id="OxB-x3-rpb"/>
                             <constraint firstItem="kDc-FS-nIV" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" constant="20" id="UnW-Pf-4NR"/>
+                            <constraint firstItem="com-D9-5rV" firstAttribute="top" secondItem="vap-29-geM" secondAttribute="bottom" constant="5" id="V5D-aJ-FRG"/>
                             <constraint firstItem="PRS-fg-zZc" firstAttribute="top" secondItem="kDc-FS-nIV" secondAttribute="bottom" constant="10" id="ZQJ-uo-ppQ"/>
                             <constraint firstItem="kDc-FS-nIV" firstAttribute="top" secondItem="nLi-1k-viz" secondAttribute="bottom" constant="30" id="aVJ-xN-wPv"/>
                             <constraint firstItem="vap-29-geM" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" id="b0Q-QX-0gG"/>
@@ -125,7 +134,9 @@
                             <constraint firstItem="BJt-xR-N8t" firstAttribute="leading" secondItem="nLi-1k-viz" secondAttribute="trailing" constant="5" id="iq0-aK-sYd"/>
                             <constraint firstItem="WPT-NK-h0d" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" constant="10" id="kMo-yR-PtN"/>
                             <constraint firstItem="nLi-1k-viz" firstAttribute="top" secondItem="vap-29-geM" secondAttribute="bottom" constant="5" id="snV-TX-Dnn"/>
+                            <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="com-D9-5rV" secondAttribute="trailing" id="tqw-fv-Gay"/>
                             <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="WPT-NK-h0d" secondAttribute="trailing" constant="10" id="vSU-Ic-hbV"/>
+                            <constraint firstItem="com-D9-5rV" firstAttribute="leading" secondItem="nLi-1k-viz" secondAttribute="trailing" constant="130" id="wb6-Gr-RLp"/>
                             <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="PRS-fg-zZc" secondAttribute="trailing" constant="5" id="zIL-De-kyR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IvK-x1-DIB"/>

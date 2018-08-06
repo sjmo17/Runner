@@ -99,7 +99,7 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
     }
     
     @IBAction func cancelButtonTapped(_sender: Any) {
-        self.performSegue(withIdentifier: "unwindToListRoutes", sender: nil)
+        self.performSegue(withIdentifier: Constants.Segues.unwindToListRoutes, sender: nil)
     }
     
     func showInputDialog() {
@@ -121,7 +121,7 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
 extension RouteSelectedViewController: DidTapCellProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "unwindToListRoutes" {
+        if segue.identifier == Constants.Segues.unwindToListRoutes {
             let vc : ListRoutesTableViewController = segue.destination as! ListRoutesTableViewController
             vc.delegate = self
         }
@@ -129,6 +129,5 @@ extension RouteSelectedViewController: DidTapCellProtocol {
     
     func didTapCell(nameOfRoute: String) {
         self.routeName = nameOfRoute
-        print("didTapCell")
     }
 }

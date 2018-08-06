@@ -12,4 +12,23 @@ struct Constants {
     struct UserDefaults {
         static let currentUser = "currentUser"
     }
+    
+    struct Keys {
+        static let users = "users"
+        static let username = "username"
+    }
+    
+    struct Storyboards {
+        static let Main = "Main"
+        static let Login = "Login"
+    }
+    
+    struct Segues {
+        static let unwindToListRoutes = "unwindToListRoutes"
+        static let toCreateUsername = "toCreateUsername"
+    }
+    
+    struct Cells {
+        static let routeCell = "routeCell"
+    }
 }

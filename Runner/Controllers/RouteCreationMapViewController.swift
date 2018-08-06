@@ -90,7 +90,6 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         routeMap.addAnnotation(annotation)
-        print("pin added")
         
         if latitudes.count > 1 {
             for index in 0...latitudes.count - 2 {

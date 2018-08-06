@@ -91,4 +91,12 @@ struct UserService {
             }
         }
     }
+    
+    static func resetStatistics(_ firUser: FIRUser) {
+        let ref = Database.database().reference().child("users").child(firUser.uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            ref.updateChildValues(["miles_run" : 0.0])
+            ref.updateChildValues(["runs" : 0])
+        }
+    }
 }
