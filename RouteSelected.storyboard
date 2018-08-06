@@ -42,7 +42,7 @@
                         <barButtonItem key="rightBarButtonItem" title="RUN" id="0zb-SQ-sD4">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="runButtonTapped:" destination="rFF-MJ-six" id="96N-q5-Nkd"/>
+                                <action selector="runButtonTapped:" destination="rFF-MJ-six" id="P2Q-T6-hQC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -16,7 +16,7 @@ protocol RouteCreationMapProtocol {
     func handleTap(gestureRecognizer: UITapGestureRecognizer)
 }
 
-class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
+class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     var latitudes = [Double]()
     var longitudes = [Double]()
@@ -28,13 +28,13 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.locationManager.requestAlwaysAuthorization()
-//        self.locationManager.requestWhenInUseAuthorization()
-//        if CLLocationManager.locationServicesEnabled() {
-//            locationManager.delegate = self
-//            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-//            locationManager.startUpdatingLocation()
-//        }
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
         
         // latitude and longitude of user's current location
         let userLocation = routeMap.userLocation
@@ -73,9 +73,11 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        let distance = calculateDistance()
-        guard let firUser = Auth.auth().currentUser else { return }
-        RouteService.createRoute(firUser, name: routeName, latitudes: latitudes, longitudes: longitudes, distance: distance)
+        if latitudes.count > 1 {
+            let distance = calculateDistance()
+            guard let firUser = Auth.auth().currentUser else { return }
+            RouteService.createRoute(firUser, name: routeName, latitudes: latitudes, longitudes: longitudes, distance: distance)
+        }
     }
     
     @IBAction func handleTap(recognizer: UITapGestureRecognizer) {
@@ -116,8 +118,6 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
             self?.routeName = name!
         }
         
-        
-
 //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
@@ -173,6 +173,10 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
         if status == .authorizedWhenInUse {
             locationManager.requestLocation()
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error)")
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {

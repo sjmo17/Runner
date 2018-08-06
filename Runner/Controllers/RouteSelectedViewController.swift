@@ -53,6 +53,8 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
             UserService.addToMiles(firUser, routeDistance: distance)
         }
         UserService.addToRuns(firUser)
+        
+        showInputDialog()
     }
     
     func getLatitudes(nameOfRoute: String, completion: @escaping ([Double]) -> Void) {
@@ -98,6 +100,21 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
     
     @IBAction func cancelButtonTapped(_sender: Any) {
         self.performSegue(withIdentifier: "unwindToListRoutes", sender: nil)
+    }
+    
+    func showInputDialog() {
+        RouteService.getRouteDistance(routeName: routeName) { (distance) in
+            guard let distance = distance else { return }
+            let dist = distance - distance.truncatingRemainder(dividingBy: 0.001)
+            
+            let alertController = UIAlertController(title: self.routeName, message: "You ran \(dist) miles.", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "OK", style: .default)
+            
+            alertController.addAction(confirmAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
 

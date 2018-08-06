@@ -22,6 +22,8 @@
 	<string>Location Services are needed to determine current location.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Location Services are needed to determine current location.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Location Services are needed to determine current location.</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
