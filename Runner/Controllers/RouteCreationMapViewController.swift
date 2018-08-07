@@ -76,7 +76,9 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
         if latitudes.count > 1 {
             let distance = calculateDistance()
             guard let firUser = Auth.auth().currentUser else { return }
-            RouteService.createRoute(firUser, name: routeName, latitudes: latitudes, longitudes: longitudes, distance: distance)
+            UserService.getUsername(firUser) { (name) in
+                RouteService.createRoute(firUser, name: "\(name ?? "")_\(self.routeName)", latitudes: self.latitudes, longitudes: self.longitudes, distance: distance)
+            }
         }
     }
     
@@ -111,7 +113,7 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
     }
     
     func showInputDialog() {
-        let alertController = UIAlertController(title: "Route Name", message: "Give a name to your custom route.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Route Name", message: "Give a name to your custom route. (No special characters.)", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak self] (_) in
             let name = alertController.textFields?[0].text
             self?.routeName = name!

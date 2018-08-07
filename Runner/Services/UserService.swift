@@ -99,4 +99,20 @@ struct UserService {
             ref.updateChildValues([Constants.Keys.runs : 0])
         }
     }
+    
+    static func getUsername(_ firUser: FIRUser, completion: @escaping (String?) -> Void) {
+        var returnName = ""
+        let ref = Database.database().reference().child(Constants.Keys.users).child(firUser.uid).child(Constants.Keys.username)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            if let value = snapshot.value as? String {
+                returnName = value
+            }
+            
+            if returnName != "" {
+                completion(returnName)
+            } else {
+                return completion("no name")
+            }
+        }
+    }
 }

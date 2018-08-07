@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Account-->
+        <!--Profile View Controller-->
         <scene sceneID="sl1-rR-qFV">
             <objects>
                 <viewController id="nQQ-U1-S7z" customClass="ProfileViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,9 +19,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWh-4V-RPW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <color key="backgroundColor" red="0.67847037247232145" green="0.65252616638703698" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vap-29-geM">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <color key="barTintColor" red="0.72314879789999997" green="0.79187085339999996" blue="0.93021589520000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="barTintColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <items>
                                     <navigationItem title="Profile" id="VMP-VV-KPI"/>
                                 </items>
@@ -108,19 +112,22 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="com-D9-5rV">
                                 <rect key="frame" x="255" y="69" width="120" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Reset Statistics"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Reset Statistics">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="resetButtonTapped:" destination="nQQ-U1-S7z" eventType="touchUpInside" id="4dS-nA-y6i"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97329818270000001" green="0.97330371800000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="nLi-1k-viz" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" constant="5" id="2Fe-0W-Yuu"/>
                             <constraint firstItem="PRS-fg-zZc" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" constant="5" id="5n3-0e-lWS"/>
                             <constraint firstItem="PRS-fg-zZc" firstAttribute="top" secondItem="kDc-FS-nIV" secondAttribute="bottom" constant="10" id="7O6-U8-aBq"/>
                             <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="kDc-FS-nIV" secondAttribute="trailing" constant="20" id="7OL-lP-VYG"/>
+                            <constraint firstItem="JWh-4V-RPW" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" id="97T-ag-GlN"/>
                             <constraint firstItem="vap-29-geM" firstAttribute="trailing" secondItem="IvK-x1-DIB" secondAttribute="trailing" id="EWG-eD-p6q"/>
                             <constraint firstItem="vap-29-geM" firstAttribute="top" secondItem="IvK-x1-DIB" secondAttribute="top" id="IDd-f8-4Bf"/>
                             <constraint firstItem="WPT-NK-h0d" firstAttribute="top" secondItem="nLi-1k-viz" secondAttribute="bottom" constant="17" id="OxB-x3-rpb"/>
@@ -130,18 +137,23 @@
                             <constraint firstItem="kDc-FS-nIV" firstAttribute="top" secondItem="nLi-1k-viz" secondAttribute="bottom" constant="30" id="aVJ-xN-wPv"/>
                             <constraint firstItem="vap-29-geM" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" id="b0Q-QX-0gG"/>
                             <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="BJt-xR-N8t" secondAttribute="trailing" constant="5" id="bu2-1m-HKz"/>
+                            <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="JWh-4V-RPW" secondAttribute="trailing" id="dQZ-xA-etR"/>
                             <constraint firstItem="BJt-xR-N8t" firstAttribute="top" secondItem="vap-29-geM" secondAttribute="bottom" constant="65" id="hXz-D0-IeA"/>
                             <constraint firstItem="BJt-xR-N8t" firstAttribute="leading" secondItem="nLi-1k-viz" secondAttribute="trailing" constant="5" id="iq0-aK-sYd"/>
                             <constraint firstItem="WPT-NK-h0d" firstAttribute="leading" secondItem="IvK-x1-DIB" secondAttribute="leading" constant="10" id="kMo-yR-PtN"/>
+                            <constraint firstItem="JWh-4V-RPW" firstAttribute="top" secondItem="u5p-Kw-0nW" secondAttribute="top" id="ndv-Cg-M2v"/>
                             <constraint firstItem="nLi-1k-viz" firstAttribute="top" secondItem="vap-29-geM" secondAttribute="bottom" constant="5" id="snV-TX-Dnn"/>
                             <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="com-D9-5rV" secondAttribute="trailing" id="tqw-fv-Gay"/>
                             <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="WPT-NK-h0d" secondAttribute="trailing" constant="10" id="vSU-Ic-hbV"/>
                             <constraint firstItem="com-D9-5rV" firstAttribute="leading" secondItem="nLi-1k-viz" secondAttribute="trailing" constant="130" id="wb6-Gr-RLp"/>
+                            <constraint firstItem="com-D9-5rV" firstAttribute="top" secondItem="JWh-4V-RPW" secondAttribute="bottom" constant="5" id="xuq-TA-LwR"/>
                             <constraint firstItem="IvK-x1-DIB" firstAttribute="trailing" secondItem="PRS-fg-zZc" secondAttribute="trailing" constant="5" id="zIL-De-kyR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IvK-x1-DIB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" id="uPy-9v-zTi"/>
+                    <tabBarItem key="tabBarItem" title="" image="tab_profile_black" id="uPy-9v-zTi">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="profileNameLabel" destination="l2i-PQ-kUI" id="UJd-Nx-Kun"/>
                         <outlet property="profileUsernameLabel" destination="aAj-07-qHy" id="zvJ-ME-OKr"/>
@@ -161,6 +173,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLL-hy-7nM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" red="0.67847037249999997" green="0.65252616640000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZbH-7H-bM3">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
@@ -169,10 +185,11 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="rwT-OT-nHu"/>
                                         </constraints>
-                                        <color key="barTintColor" red="0.72314879789999997" green="0.79187085339999996" blue="0.93021589520000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="barTintColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <items>
                                             <navigationItem title="Your Routes" id="Wah-h7-RWo">
                                                 <barButtonItem key="rightBarButtonItem" systemItem="add" id="qwK-oM-mq4">
+                                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <connections>
                                                         <segue destination="LWR-N1-95C" kind="show" identifier="addRoute" id="itu-0D-JWO"/>
                                                     </connections>
@@ -228,7 +245,7 @@
                                                         <constraint firstItem="hjZ-Bj-iW4" firstAttribute="leading" secondItem="OBb-nr-VV0" secondAttribute="leadingMargin" id="kUn-rk-OhY"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" red="0.72156862749999995" green="0.79215686269999996" blue="0.92941176469999998" alpha="0.09597067636986302" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" red="0.97329818267601997" green="0.97330371797563175" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <connections>
                                                     <outlet property="routeDistanceLabel" destination="xRh-JM-12h" id="y7B-dc-GTB"/>
                                                     <outlet property="routeLocationLabel" destination="N4X-aF-wXz" id="gj5-z4-SDn"/>
@@ -253,9 +270,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HLL-hy-7nM" firstAttribute="leading" secondItem="hN2-ex-YxA" secondAttribute="leading" id="BPU-wM-wPZ"/>
+                            <constraint firstItem="hN2-ex-YxA" firstAttribute="bottom" secondItem="HLL-hy-7nM" secondAttribute="bottom" id="KX7-r5-gEA"/>
+                            <constraint firstItem="HLL-hy-7nM" firstAttribute="top" secondItem="dzT-fL-JVy" secondAttribute="top" id="RNl-9r-v29"/>
                             <constraint firstItem="hN2-ex-YxA" firstAttribute="bottom" secondItem="ZbH-7H-bM3" secondAttribute="bottom" id="SOT-GM-0ba"/>
                             <constraint firstItem="hN2-ex-YxA" firstAttribute="trailing" secondItem="ZbH-7H-bM3" secondAttribute="trailing" id="gxA-8K-urF"/>
                             <constraint firstItem="ZbH-7H-bM3" firstAttribute="top" secondItem="hN2-ex-YxA" secondAttribute="top" id="iYC-OQ-5rv"/>
+                            <constraint firstItem="hN2-ex-YxA" firstAttribute="trailing" secondItem="HLL-hy-7nM" secondAttribute="trailing" id="qd8-dL-ir3"/>
                             <constraint firstItem="ZbH-7H-bM3" firstAttribute="leading" secondItem="dzT-fL-JVy" secondAttribute="leading" id="yN7-Vo-yE2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hN2-ex-YxA"/>
@@ -293,7 +314,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.72314879789999997" green="0.79187085339999996" blue="0.93021589520000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
@@ -308,5 +329,6 @@
     </scenes>
     <resources>
         <image name="defaultprofilepicture" width="240" height="240"/>
+        <image name="tab_profile_black" width="25" height="25"/>
     </resources>
 </document>

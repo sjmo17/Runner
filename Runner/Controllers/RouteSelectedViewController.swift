@@ -45,12 +45,16 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
         }
         navigationItem.title = routeName
     }
+    
     @IBAction func runButtonTapped(_ sender: Any) {
         guard let firUser = Auth.auth().currentUser else { return }
         guard let routeName = navigationItem.title else { return }
-        RouteService.getRouteDistance(routeName: routeName) { (distance) in
-            guard let distance = distance else { return }
-            UserService.addToMiles(firUser, routeDistance: distance)
+        UserService.getUsername(firUser) { (username) in
+            let name = "\(username ?? "")_\(routeName)"
+            RouteService.getRouteDistance(routeName: name) { (distance) in
+                guard let distance = distance else { return }
+                UserService.addToMiles(firUser, routeDistance: distance)
+            }
         }
         UserService.addToRuns(firUser)
         
@@ -58,14 +62,22 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
     }
     
     func getLatitudes(nameOfRoute: String, completion: @escaping ([Double]) -> Void) {
-        RouteService.getRouteLatitudes(routeName: nameOfRoute) { (latitudes) in
-            completion(latitudes!)
+        guard let firUser = Auth.auth().currentUser else { return }
+        UserService.getUsername(firUser) { (username) in
+            let name = "\(username ?? "")_\(nameOfRoute)"
+            RouteService.getRouteLatitudes(routeName: name) { (latitudes) in
+                completion(latitudes!)
+            }
         }
     }
     
     func getLongitudes(nameOfRoute: String, completion: @escaping ([Double]) -> Void) {
-        RouteService.getRouteLongitudes(routeName: nameOfRoute) { (longitudes) in
-            completion(longitudes!)
+        guard let firUser = Auth.auth().currentUser else { return }
+        UserService.getUsername(firUser) { (username) in
+            let name = "\(username ?? "")_\(nameOfRoute)" 
+            RouteService.getRouteLongitudes(routeName: name) { (longitudes) in
+                completion(longitudes!)
+            }
         }
     }
     
@@ -103,17 +115,21 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
     }
     
     func showInputDialog() {
-        RouteService.getRouteDistance(routeName: routeName) { (distance) in
-            guard let distance = distance else { return }
-            let dist = distance - distance.truncatingRemainder(dividingBy: 0.001)
-            
-            let alertController = UIAlertController(title: self.routeName, message: "You ran \(dist) miles.", preferredStyle: .alert)
-            
-            let confirmAction = UIAlertAction(title: "OK", style: .default)
-            
-            alertController.addAction(confirmAction)
-            
-            self.present(alertController, animated: true, completion: nil)
+        guard let firUser = Auth.auth().currentUser else { return }
+        UserService.getUsername(firUser) { (username) in
+            let name = "\(username ?? "")_\(self.routeName)"
+            RouteService.getRouteDistance(routeName: name) { (distance) in
+                guard let distance = distance else { return }
+                let dist = distance - distance.truncatingRemainder(dividingBy: 0.001)
+                
+                let alertController = UIAlertController(title: self.routeName, message: "You ran \(dist) miles.", preferredStyle: .alert)
+                
+                let confirmAction = UIAlertAction(title: "OK", style: .default)
+                
+                alertController.addAction(confirmAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
     }
 }

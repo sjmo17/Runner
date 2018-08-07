@@ -28,9 +28,16 @@ class ListRoutesTableViewController: UIViewController {
         super.viewDidLoad()
         self.routesTableView.dataSource = self
         //self.table.delegate = self
+        DispatchQueue.main.async {
+            self.reload()
+        }
+        //reload()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         reload()
     }
-
+    
     @IBAction func unwindToListRoutes(segue: UIStoryboardSegue) {
         reload()
     }
@@ -81,7 +88,11 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cells.routeCell, for: indexPath) as! RouteTableViewCell
         
         if let routes = self.routes {
-            let route = routes[indexPath.row]
+            var route = routes[indexPath.row]
+            if let index = route.index(of: "_") {
+                let sIndex = route.startIndex
+                route.removeSubrange(sIndex...index)
+            }
             cell.routeNameLabel.text = route
             var distance = distances[indexPath.row]
             distance = distance - distance.truncatingRemainder(dividingBy: 0.001)
@@ -104,8 +115,12 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
             
             guard let firUser = Auth.auth().currentUser else { return }
             let cell = tableView.cellForRow(at: indexPath) as! RouteTableViewCell
-            RouteService.deleteRoute(firUser, routeName: cell.routeNameLabel.text!)
-            reload()
+            let routeName = cell.routeNameLabel.text
+            UserService.getUsername(firUser) { (username) in
+                let name = "\(username ?? "")_\(routeName ?? "")"
+                RouteService.deleteRoute(firUser, routeName: name)
+            }
+            self.reload()
         }
     }
     
