@@ -24,13 +24,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="V0p-6u-VgM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bd-qI-n9B">
                                 <rect key="frame" x="10" y="607" width="355" height="50"/>
                                 <color key="backgroundColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Log In or Register">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -47,13 +47,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.67847037249999997" green="0.65252616640000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOg-FH-NBJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
                                 <color key="backgroundColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.97329818270000001" green="0.97330371800000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="tm1-eP-Zkc" firstAttribute="leading" secondItem="3uq-yJ-gci" secondAttribute="leading" constant="10" id="6ga-AY-fMu"/>
                             <constraint firstItem="0bd-qI-n9B" firstAttribute="top" secondItem="tm1-eP-Zkc" secondAttribute="bottom" constant="10" id="8m9-lM-yDv"/>
@@ -139,7 +140,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97329818270000001" green="0.97330371800000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ph3-cX-hww" firstAttribute="top" secondItem="UEz-57-MOX" secondAttribute="top" constant="45" id="5c1-GT-JA2"/>
                             <constraint firstItem="UEz-57-MOX" firstAttribute="trailing" secondItem="ph3-cX-hww" secondAttribute="trailing" constant="35" id="QER-ny-qeS"/>
