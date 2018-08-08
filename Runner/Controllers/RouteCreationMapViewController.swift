@@ -180,9 +180,9 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
         print("error:: \(error)")
     }
     
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegionMake(mapView.userLocation.coordinate, span)
-        mapView.setRegion(region, animated: true)
-    }
+//    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+//        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//        let region = MKCoordinateRegionMake(mapView.userLocation.coordinate, span)
+//        mapView.setRegion(region, animated: true)
+//    }
 }

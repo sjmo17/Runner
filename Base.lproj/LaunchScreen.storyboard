@@ -17,7 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="oUG-wT-fZI">
+                                <rect key="frame" x="25" y="125" width="325" height="317"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R U N N E R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ld5-b2-bQY">
+                                <rect key="frame" x="5" y="452" width="365" height="26"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.85537230040000001" green="0.85706679900000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Ld5-b2-bQY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="03M-w9-PFN"/>
+                            <constraint firstItem="Ld5-b2-bQY" firstAttribute="top" secondItem="oUG-wT-fZI" secondAttribute="bottom" constant="10" id="55v-r4-We4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ld5-b2-bQY" secondAttribute="trailing" constant="5" id="9tb-vZ-ytt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oUG-wT-fZI" secondAttribute="trailing" constant="25" id="AJt-r7-EAY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oUG-wT-fZI" secondAttribute="bottom" constant="225" id="PEA-H5-1u4"/>
+                            <constraint firstItem="oUG-wT-fZI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="125" id="aRi-IH-nfW"/>
+                            <constraint firstItem="oUG-wT-fZI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="lUP-bo-6BJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -26,4 +46,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pin" width="800" height="800"/>
+    </resources>
 </document>

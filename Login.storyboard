@@ -29,7 +29,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bd-qI-n9B">
                                 <rect key="frame" x="10" y="607" width="355" height="50"/>
-                                <color key="backgroundColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.85537230040000001" green="0.85706679900000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="Log In or Register">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +51,18 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOg-FH-NBJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
-                                <color key="backgroundColor" red="0.65467450029999996" green="0.62730267169999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="cQT-3j-Hyy">
+                                        <rect key="frame" x="25" y="125" width="325" height="317"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85537230042110668" green="0.85706679904813499" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="cQT-3j-Hyy" secondAttribute="bottom" constant="100" id="UFn-bb-SyA"/>
+                                    <constraint firstItem="cQT-3j-Hyy" firstAttribute="leading" secondItem="cOg-FH-NBJ" secondAttribute="leading" constant="25" id="aKW-RG-hgd"/>
+                                    <constraint firstAttribute="trailing" secondItem="cQT-3j-Hyy" secondAttribute="trailing" constant="25" id="bIi-NS-bLa"/>
+                                    <constraint firstItem="cQT-3j-Hyy" firstAttribute="top" secondItem="cOg-FH-NBJ" secondAttribute="top" constant="125" id="hDS-es-wh2"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97329818270000001" green="0.97330371800000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -175,4 +186,7 @@
             <point key="canvasLocation" x="141.59999999999999" y="164.16791604197903"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pin" width="800" height="800"/>
+    </resources>
 </document>

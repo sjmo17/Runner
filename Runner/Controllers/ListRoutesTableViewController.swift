@@ -20,6 +20,13 @@ class ListRoutesTableViewController: UIViewController {
     var distances = [Double]()
     var delegate: DidTapCellProtocol?
     var addresses = [String]()
+    var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ListRoutesTableViewController.handleRefresh(_:)),
+                                 for: UIControlEvents.valueChanged)
+        //refreshControl.tintColor = UIColor.red
+        return refreshControl
+    }()
     
     @IBOutlet weak var routesTableView: UITableView!
     
@@ -27,6 +34,7 @@ class ListRoutesTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.routesTableView.dataSource = self
+        self.routesTableView.addSubview(self.refreshControl)
         //self.table.delegate = self
         DispatchQueue.main.async {
             self.reload()
@@ -40,6 +48,11 @@ class ListRoutesTableViewController: UIViewController {
     
     @IBAction func unwindToListRoutes(segue: UIStoryboardSegue) {
         reload()
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        reload()
+        refreshControl.endRefreshing()
     }
 }
 
