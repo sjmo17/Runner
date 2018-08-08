@@ -19,12 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        // Login everytime upon opening app
         let storyboard = UIStoryboard(name: Constants.Storyboards.Login, bundle: .main)
         if let initialViewController = storyboard.instantiateInitialViewController() {
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()
         }
         
+        // For persistent logins
 //        configureInitialRootViewController(for: window)
         
         return true

@@ -119,7 +119,6 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
             self?.routeName = name!
         }
         
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addTextField { (textField) in
@@ -131,9 +130,7 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
 
         self.present(alertController, animated: true, completion: nil)
     }
-//}
 
-//extension RouteCreationMapViewController: MKMapViewDelegate {
     func drawLine(latitude1: Double, longitude1: Double, latitude2: Double, longitude2: Double) {
         var coordinateArray = [CLLocationCoordinate2D]()
         coordinateArray.append(CLLocationCoordinate2DMake(latitude1, longitude1))
@@ -153,12 +150,6 @@ class RouteCreationMapViewController: UIViewController, MKMapViewDelegate, CLLoc
         }
         fatalError("Something wrong...")
     }
-    
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        let annotationView = MKPinAnnotationView()
-//        annotationView.pinTintColor = .blue
-//        return annotationView
-//    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()

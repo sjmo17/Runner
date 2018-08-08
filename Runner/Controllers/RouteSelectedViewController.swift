@@ -14,8 +14,6 @@ import FirebaseAuth
 
 class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
 
-    //var latitudes: [Double]?
-    //var longitudes: [Double]?
     var routeName = "CustomRoute"
     let dataDispatchGroup = DispatchGroup()
     

@@ -17,9 +17,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var totalMilesLabel: UILabel!
     @IBOutlet weak var totalRunsLabel: UILabel!
     
-    //var milesrun = 0.0
-    //var runs = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,14 +32,12 @@ class ProfileViewController: UIViewController {
         profileNameLabel.text = name
         
         UserService.getMilesRun(firUser) { (miles) in
-            //.milesrun = miles!
             guard let miles = miles else { return }
             var milesToDisplay = miles
             milesToDisplay = miles - miles.truncatingRemainder(dividingBy: 0.001)
             self.totalMilesLabel.text = String(milesToDisplay)
         }
         UserService.getTotalRuns(firUser) { (runs) in
-            //self.runs = runs!
             guard let runs = runs else { return }
             self.totalRunsLabel.text = String(runs)
         }
@@ -52,14 +47,12 @@ class ProfileViewController: UIViewController {
         guard let firUser = Auth.auth().currentUser else { return }
         
         UserService.getMilesRun(firUser) { (miles) in
-            //.milesrun = miles!
             guard let miles = miles else { return }
             var milesToDisplay = miles
             milesToDisplay = miles - miles.truncatingRemainder(dividingBy: 0.001)
             self.totalMilesLabel.text = String(milesToDisplay)
         }
         UserService.getTotalRuns(firUser) { (runs) in
-            //self.runs = runs!
             guard let runs = runs else { return }
             self.totalRunsLabel.text = String(runs)
         }

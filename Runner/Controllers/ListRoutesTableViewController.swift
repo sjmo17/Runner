@@ -24,7 +24,6 @@ class ListRoutesTableViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(ListRoutesTableViewController.handleRefresh(_:)),
                                  for: UIControlEvents.valueChanged)
-        //refreshControl.tintColor = UIColor.red
         return refreshControl
     }()
     
@@ -35,11 +34,9 @@ class ListRoutesTableViewController: UIViewController {
         super.viewDidLoad()
         self.routesTableView.dataSource = self
         self.routesTableView.addSubview(self.refreshControl)
-        //self.table.delegate = self
         DispatchQueue.main.async {
             self.reload()
         }
-        //reload()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,7 +121,6 @@ extension ListRoutesTableViewController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-//            self.routesTableView.deleteRows(at: [indexPath], with: .automatic)
             
             guard let firUser = Auth.auth().currentUser else { return }
             let cell = tableView.cellForRow(at: indexPath) as! RouteTableViewCell
