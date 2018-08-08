@@ -156,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="461.60000000000002" y="104.7976011994003"/>
         </scene>
-        <!--Routes-->
+        <!--List Routes Table View Controller-->
         <scene sceneID="hkH-6p-ePc">
             <objects>
                 <viewController id="kf8-SZ-27d" customClass="ListRoutesTableViewController" customModule="Runner" customModuleProvider="target" sceneMemberID="viewController">
@@ -275,7 +275,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hN2-ex-YxA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Routes" id="kts-qo-90J"/>
+                    <tabBarItem key="tabBarItem" title="" image="routelist" id="kts-qo-90J">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="routesTableView" destination="1PP-gO-jVf" id="XFj-r6-aJg"/>
                     </connections>
@@ -322,6 +324,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="routelist" width="50" height="50"/>
         <image name="tab_profile_black" width="25" height="25"/>
     </resources>
 </document>
