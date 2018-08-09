@@ -504,7 +504,8 @@
 			baseConfigurationReference = A23798B41F4502BADB424ED0 /* Pods-Runner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jenny Mo (8W82XZBDDS)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 996VP3LV99;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -513,6 +514,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevenmo.Runner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RunnerDevelopmentProfile;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -523,7 +525,8 @@
 			baseConfigurationReference = 53E34528FBABBBC70E15521C /* Pods-Runner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jenny Mo (996VP3LV99)";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 996VP3LV99;
 				INFOPLIST_FILE = Runner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -532,6 +535,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevenmo.Runner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = RunnerDistributionProfile;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
