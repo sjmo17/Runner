@@ -101,7 +101,7 @@ class RouteSelectedViewController: UIViewController, MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let polyline = overlay as? MKPolyline {
             let testlineRenderer = MKPolylineRenderer(polyline: polyline)
-            testlineRenderer.strokeColor = .red //UIColor(red: 184, green: 202, blue: 237, alpha: 255)
+            testlineRenderer.strokeColor = .red
             testlineRenderer.lineWidth = 2.0
             return testlineRenderer
         }
