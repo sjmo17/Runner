@@ -47,6 +47,7 @@
 		C331BF7F210F871900DBBFCE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		C331BF81210FAD2800DBBFCE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C331BF83210FAE9800DBBFCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C37D7BE2211CE0B500103D63 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		C39E0DC62107A44500A931F3 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C39E0DCA2107A55E00A931F3 /* RouteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteService.swift; sourceTree = "<group>"; };
 		C3B3B2D72107926F00448259 /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +105,7 @@
 		C3B3B2D92107926F00448259 /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				C37D7BE2211CE0B500103D63 /* Runner.entitlements */,
 				C3B3B2DA2107926F00448259 /* AppDelegate.swift */,
 				C3B3B2EE2107999400448259 /* Storyboards */,
 				C3B3B2F721079A0800448259 /* Supporting Files */,
@@ -239,6 +241,14 @@
 				TargetAttributes = {
 					C3B3B2D62107926F00448259 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.VPNLite = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
